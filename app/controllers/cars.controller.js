@@ -1,7 +1,7 @@
 'use strict'
 
 function getCars(req, res) {
-    res.json({message : 'los carross '})
+    res.json({message : 'el carro '})
 }
 
 module.exports = {
