@@ -18,4 +18,6 @@ app.use(express.json())
 
 // Routes
 
+app.use(require('./routes/cars.route'))
+
 module.exports = app
