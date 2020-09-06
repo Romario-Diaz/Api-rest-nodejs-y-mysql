@@ -19,3 +19,5 @@ const mysql = require('mysql'),
             console.log(`base de datos conectada !!!`)
         }
     })
+
+module.exports = myConn
