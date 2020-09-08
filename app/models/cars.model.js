@@ -23,6 +23,27 @@ var dataModels = {
                 callback(rows)
             })
         }
+    },
+    addCar : (data, callback) => {
+
+        if(connection) {
+            let sql = `insert into cars(marca, descripcion) values (${connection.escape(data.marca)}, ${connection.escape(data.descripcion)})`
+
+            connection.query(sql, (error, rows) => {
+                if(error) throw error
+                callback({message : 'carro insertado'})
+            })
+        }
+    },
+    deleteCar : (data, callback) => {
+        if(connection) {
+            let sql = `delete from cars where id = ${connection.escape(data)}`
+
+            connection.query(sql, (error, rows) => {
+                if(error) throw error
+                callback({message: 'carro eliminado'})
+            })
+        }
     }
 }
 
