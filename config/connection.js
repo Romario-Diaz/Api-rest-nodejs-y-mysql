@@ -12,12 +12,12 @@ const mysql = require('mysql'),
 
     const myConn = mysql.createConnection(objectConnection)
 
-    // myConn.connect((err) => {
-    //     if(err) {
-    //         console.log(`ha ocurrido un error : ${err}`)
-    //     }else {
-    //         console.log(`base de datos conectada !!!`)
-    //     }
-    // })
+    myConn.connect((err) => {
+        if(err) {
+            console.log(`ha ocurrido un error : ${err}`)
+        }else {
+            console.log(`base de datos conectada !!!`)
+        }
+    })
 
 module.exports = myConn

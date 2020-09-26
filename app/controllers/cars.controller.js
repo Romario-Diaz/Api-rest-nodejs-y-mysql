@@ -1,22 +1,13 @@
 'use strict'
 
 const dataModels = require('../models/cars.model')
-
-const util = require('util')
 const connection = require('../../config/connection')
 
 async function getCars(req, res) {
-    const query = util.promisify(connection.query).bind(connection)
-    try {
-        const rows = await query(`select * from cars`)
-        console.log(rows)
-    }finally {
-        connection.end()
-    }
-    // dataModels.getCars((data, error) => {
-    //     // 404 500
-    //     res.json(data)
-    // })
+    dataModels.getCars((data, error) => {
+        // 404 500
+        res.json(data)
+    })
 }
 
 function getOneCar(req, res) {
@@ -37,7 +28,11 @@ function addCar (req, res) {
 }
 
 function editCar(req, res) {
-
+    const { id } = req.params
+    const { marca, descripcion } = req.body
+    dataModels.editCar({id, marca, descripcion}, (data, error) => {
+        res.json(data)
+    })
 }
 
 function deleteCar(req, res) {

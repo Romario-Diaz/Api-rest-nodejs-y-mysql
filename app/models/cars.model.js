@@ -35,6 +35,16 @@ var dataModels = {
             })
         }
     },
+    editCar : (data, callback) => {
+        if(connection) {
+            let sql = `update cars set marca = ${connection.escape(data.marca)}, descripcion = ${connection.escape(data.descripcion)} where id = ${connection.escape(data.id)}`
+
+            connection.query(sql, (error, rows) => {
+                if(error) throw error
+                callback({message: 'carro actualizado'})
+            })
+        }
+    },
     deleteCar : (data, callback) => {
         if(connection) {
             let sql = `delete from cars where id = ${connection.escape(data)}`
